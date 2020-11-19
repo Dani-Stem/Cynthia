@@ -1,0 +1,26 @@
+
+import discord
+
+bot = discord.Client()
+
+@bot.event
+async def on_ready():
+	guild_count = 0
+
+	for guild in bot.guilds:
+		print(f"- {guild.id} (name: {guild.name})")
+
+		guild_count = guild_count + 1
+
+	print("SampleDiscordBot is in " + str(guild_count) + " guilds.")
+
+@bot.event
+async def on_message(message):
+	if 'hello' in message.content:
+		await message.channel.send("hey beautiful")
+@bot.event
+async def on_message(message):
+	if 'dani' in message.content:
+		await message.channel.send("Dani is my favorite streamer")
+
+bot.run("token")
