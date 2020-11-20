@@ -16,11 +16,9 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-	if 'hello' in message.content:
-		await message.channel.send("hey beautiful")
-@bot.event
-async def on_message(message):
 	if 'dani' in message.content:
-		await message.channel.send("Dani is my favorite streamer")
+		await message.channel.send("Dani is my favorite streamer") 
+	if 'hello' in message.content:
+		await message.channel.send("hey beautiful")     
 
-bot.run("token")
+bot.run("token") 
