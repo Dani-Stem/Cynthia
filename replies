@@ -1,6 +1,8 @@
 
 import discord
+from udpy import UrbanClient
 
+client = UrbanClient()
 bot = discord.Client()
 
 @bot.event
@@ -14,11 +16,18 @@ async def on_ready():
 
 	print("SampleDiscordBot is in " + str(guild_count) + " guilds.")
 
+
+replies = [ 
+	
+]
+
 @bot.event
 async def on_message(message):
 	if 'dani' in message.content:
 		await message.channel.send("Dani is my favorite streamer") 
 	if 'hello' in message.content:
-		await message.channel.send("hey beautiful")     
+		await message.channel.send("hey beautiful")   
+	if '!urbandictionary' in message.content:
+		await message.channel.send(client.get_random_definition())  
 
-bot.run("token") 
+bot.run("yeee") 
