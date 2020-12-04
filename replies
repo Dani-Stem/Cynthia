@@ -1,33 +1,23 @@
-
+import os
 import discord
-from udpy import UrbanClient
+from dotenv import load_dotenv
 
-client = UrbanClient()
-bot = discord.Client()
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
 
-@bot.event
+client = discord.Client()
+
+@client.event
 async def on_ready():
-	guild_count = 0
+    print(f'{client.user} has connected to Discord!')
 
-	for guild in bot.guilds:
-		print(f"- {guild.id} (name: {guild.name})")
-
-		guild_count = guild_count + 1
-
-	print("SampleDiscordBot is in " + str(guild_count) + " guilds.")
-
-
-replies = [ 
-	
-]
-
-@bot.event
+@client.event
 async def on_message(message):
 	if 'dani' in message.content:
 		await message.channel.send("Dani is my favorite streamer") 
 	if 'hello' in message.content:
 		await message.channel.send("hey beautiful")   
-	if '!urbandictionary' in message.content:
-		await message.channel.send(client.get_random_definition())  
 
-bot.run("yeee") 
+
+
+client.run(TOKEN)
