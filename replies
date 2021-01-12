@@ -1,11 +1,15 @@
 import os
 import discord
+import random 
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
+
+greetings = ['hello', 'hi', 'hey']
+gReplies = ['hello beautiful', 'whats up', 'hey sir']
 
 @client.event
 async def on_ready():
@@ -15,9 +19,8 @@ async def on_ready():
 async def on_message(message):
 	if 'dani' in message.content:
 		await message.channel.send("Dani is my favorite streamer") 
-	if 'hello' in message.content:
-		await message.channel.send("hey beautiful")   
-
+	if message.content in greetings:
+		await message.channel.send(random.choice(gReplies))   
 
 
 client.run(TOKEN)
