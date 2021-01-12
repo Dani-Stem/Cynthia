@@ -9,7 +9,8 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
 
 greetings = ['hello', 'hi', 'hey', 'whats up homeslice']
-gReplies = ['hello beautiful', 'whats up', 'hey sir', 'hm, do you hear something', 'yo jaypo']
+gReplies = ['hello beautiful', 'whats up', 'hey sir', 'hm, do you hear something', 'yo jaypo', 'yeerrrr']
+backendReplies = ['made allot of money on the backeeeend', 'siri, play backend by don toliver', 'is don toli here?']
 decisions = ['yes', 'no', 'ask again']
 
 @client.event
@@ -23,6 +24,9 @@ async def on_message(message):
 
 	if 'dani' in message.content:
 		await message.channel.send("Dani is my favorite streamer") 
+
+	if 'backend' in message.content:
+		await message.channel.send(random.choice(backendReplies))  
 
 	if message.content in greetings:
 		await message.channel.send(person + ', ' + random.choice(gReplies))
