@@ -8,8 +8,9 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
 
-greetings = ['hello', 'hi', 'hey']
-gReplies = ['hello beautiful', 'whats up', 'hey sir']
+greetings = ['hello', 'hi', 'hey', 'whats up homeslice']
+gReplies = ['hello beautiful', 'whats up', 'hey sir', 'hm, do you hear something', 'yo jaypo']
+decisions = ['yes', 'no', 'ask again']
 
 @client.event
 async def on_ready():
@@ -17,10 +18,19 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+
+	person = message.author.name
+
 	if 'dani' in message.content:
 		await message.channel.send("Dani is my favorite streamer") 
+
 	if message.content in greetings:
-		await message.channel.send(random.choice(gReplies))   
+		await message.channel.send(person + ', ' + random.choice(gReplies))
 
+	if 'decision' in message.content:
+		await message.channel.send(random.choice(decisions))  
 
+	if 'guro' in message.content:
+		await message.channel.send("hello {0} whats {1}".format(person, "up?"))
+		
 client.run(TOKEN)
